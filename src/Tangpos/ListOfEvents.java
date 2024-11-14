@@ -109,26 +109,57 @@ public class ListOfEvents {
                 System.out.println("Enter a Valid Amount!");
             }
         }
-        String sql = "UPDATE tbl_Events SET E_Name = ?, E_Theme = ?, E_Date = ?, E_Price = ? Where E_Id = ?";
-        config conf = new config();
-        conf.updateRecord(sql, name, theme, date, price, id);
-    }
-    public void delete(){
-        int id;
-        while(true){
-            System.out.print("Enter ID: ");
-            try{
-                id = sc.nextInt();
+         // Confirm update
+        String confirmation;
+        while (true) {
+            System.out.print("Are you sure you want to update the record with ID " + id + "? (Y/N): ");
+            confirmation = sc.next();
+
+            if (confirmation.equals("Y") || confirmation.equals("y")) {
+                String sql = "UPDATE tbl_Events SET E_Name = ?, E_Theme = ?, E_Date = ?, E_Price = ? Where E_Id = ?";
+                config conf = new config();
+                conf.updateRecord(sql, name, theme, date, price, id);
                 break;
-            }catch(Exception e){
-                sc.next();
-                System.out.println("Enter a valid Integer!");
+            } else if (confirmation.equals("N") || confirmation.equals("n")) {
+                System.out.println("Update cancelled.");
+                break;
+            } else {
+                System.out.println("Please enter 'Y' for yes or 'N' for no.");
             }
         }
-        String sql = "DELETE From tbl_Events Where E_Id = ?";
-        config conf = new config();
-        conf.deleteRecord(sql, id);
+
     }
+    public void delete(){
+             int id;
+             String confirmation;
+            while (true) {
+                System.out.print("Enter ID: ");
+                try {
+                    id = sc.nextInt();
+                    break;
+                } catch (Exception e) {
+                    sc.next();
+                    System.out.println("Enter a valid Integer!");
+                }
+            }
+            // Confirm deletion
+            while (true) {
+                System.out.print("Are you sure you want to delete the record with ID " + id + "? (Y/N): ");
+                confirmation = sc.next();
+
+                if (confirmation.equals("Y")) {
+                    String sql = "DELETE FROM tbl_Events WHERE E_Id = ?";
+                    config conf = new config();
+                    conf.deleteRecord(sql, id);
+                    break;
+                } else if (confirmation.equals("N")) {
+                    System.out.println("Deletion cancelled.");
+                    break;
+                } else {
+                    System.out.println("Please enter 'Y' for yes or 'N' for no.");
+                }
+            }
+        }
     public void view(){
         String tbl_view = "SELECT * FROM tbl_Events";
         String[] tbl_Headers = {"ID", "Event Name", "Event Theme", "Event Date", "Price"};

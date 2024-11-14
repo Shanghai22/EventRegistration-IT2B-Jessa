@@ -99,11 +99,28 @@ public class Participants_Registration {
         String lname = sc.next();
         System.out.print("Gender: ");
         String gender = sc.next();
-        String sql = "UPDATE tbl_Register SET R_fname = ?, R_lname = ?, R_gender = ? Where R_Id = ?";
-        conf.addRecord(sql, fname, lname, gender, id);
+        String confirmation;
+        while (true) {
+            System.out.print("Are you sure you want to update the record with ID " + id + "? (Y/N): ");
+            confirmation = sc.next();
+
+            if (confirmation.equals("Y") || confirmation.equals("y")) {
+                String sql = "UPDATE tbl_Register SET R_fname = ?, R_lname = ?, R_gender = ? WHERE R_Id = ?";
+                config conf = new config();
+                conf.updateRecord(sql, fname, lname, gender, id);
+                break;
+            } else if (confirmation.equals("N") || confirmation.equals("n")) {
+                System.out.println("Update cancelled.");
+                break;
+            } else {
+                System.out.println("Please enter 'Y' for yes or 'N' for no.");
+            }
+        }
+
     }
     public void delete(){
         int id;
+        String confirmation;
         while(true){
             System.out.print("Enter ID: ");
             try{
@@ -114,9 +131,24 @@ public class Participants_Registration {
                 System.out.println("Enter a valid Integer!");
             }
         }
-        String sql = "DELETE From tbl_Register Where R_Id = ?";
-        config conf = new config();
-        conf.deleteRecord(sql, id);
+        // Connfirm deletion
+        while (true) {
+            System.out.print("Are you sure you want to delete the record with ID " + id + "? (Y/N): ");
+            confirmation = sc.next();
+
+            if (confirmation.equals("Y")) {
+                String sql = "DELETE From tbl_Register Where R_Id = ?";
+                config conf = new config();
+                conf.deleteRecord(sql, id);
+                break;
+            } else if (confirmation.equals("N")) {
+                System.out.println("Deletion cancelled.");
+                break;
+            } else {
+                System.out.println("Please enter 'Y' for yes or 'N' for no.");
+            }
+        }
+        
     }
     public void view(){
         String tbl_view = "SELECT * FROM tbl_Register";
