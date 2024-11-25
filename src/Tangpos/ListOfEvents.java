@@ -8,13 +8,16 @@ public class ListOfEvents {
     public void listingevents(){
         boolean exit = true;
         while(exit){
-            System.out.println("------------------");
+            System.out.println("+-----------------------------------------------------------------+");
+            System.out.println("Event");
+            System.out.println("+-----------------------------------------------------------------+");
             System.out.println("Select Choice:");
             System.out.println("1. Add Event");
             System.out.println("2. Edit Event");
             System.out.println("3. Delete Event");
             System.out.println("4. View");
             System.out.println("5. Go Back");
+            System.out.println("+-----------------------------------------------------------------+");
             int option;
             while(true){
                 System.out.print("Enter (1-5): ");
@@ -109,7 +112,7 @@ public class ListOfEvents {
                 System.out.println("Enter a Valid Amount!");
             }
         }
-         // Confirm update
+         
         String confirmation;
         while (true) {
             System.out.print("Are you sure you want to update the record with ID " + id + "? (Y/N): ");
@@ -142,7 +145,7 @@ public class ListOfEvents {
                     System.out.println("Enter a valid Integer!");
                 }
             }
-            // Confirm deletion
+            
             while (true) {
                 System.out.print("Are you sure you want to delete the record with ID " + id + "? (Y/N): ");
                 confirmation = sc.next();
@@ -160,7 +163,7 @@ public class ListOfEvents {
                 }
             }
         }
-    public void view(){
+    public static void view(){
         String tbl_view = "SELECT * FROM tbl_Events";
         String[] tbl_Headers = {"ID", "Event Name", "Event Theme", "Event Date", "Price"};
         String[] tbl_Columns = {"E_Id", "E_Name", "E_Theme", "E_Date", "E_Price"};

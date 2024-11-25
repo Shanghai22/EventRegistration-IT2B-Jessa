@@ -11,13 +11,16 @@ public class Participants_Registration {
     public void listingregistration(){
         boolean exit = true;
         while(exit){
-            System.out.println("------------------");
+            System.out.println("+-----------------------------------------------------------------+");
+            System.out.println("Participants");
+            System.out.println("+-----------------------------------------------------------------+");
             System.out.println("\tRegister A Participants");
             System.out.println("1. Add");
             System.out.println("2. Edit");
             System.out.println("3. Delete");
             System.out.println("4. View");
             System.out.println("5. Go Back");
+            System.out.println("+-----------------------------------------------------------------+");
             int option;
             while(true){
                 System.out.print("Enter (1-5): ");
@@ -131,7 +134,7 @@ public class Participants_Registration {
                 System.out.println("Enter a valid Integer!");
             }
         }
-        // Connfirm deletion
+        
         while (true) {
             System.out.print("Are you sure you want to delete the record with ID " + id + "? (Y/N): ");
             confirmation = sc.next();

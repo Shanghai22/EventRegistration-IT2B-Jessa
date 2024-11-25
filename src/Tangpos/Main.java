@@ -7,13 +7,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean exit = true;
         while(exit){
-            System.out.println("+--------------------+");
+            System.out.println("+-----------------------------------------------------------------+");
             System.out.printf("|%-20s|\n","Event Registration");
-            System.out.println("+--------------------+");
+            System.out.println("+-----------------------------------------------------------------+");
             System.out.println("1. List of Events");
             System.out.println("2. Participants Registration");
             System.out.println("3. Report");
             System.out.println("4. Exit");
+            System.out.println("+-----------------------------------------------------------------+");
             int option;
             while(true){
                 System.out.print("Enter (1-4): ");
