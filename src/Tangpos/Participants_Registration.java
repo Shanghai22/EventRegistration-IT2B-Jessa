@@ -220,4 +220,19 @@ public class Participants_Registration {
         }
         return false;
     }
+    private int getValidIntegerInput(String prompt) {
+    int value = -1;
+    while (true) {
+        System.out.print(prompt);
+        if (sc.hasNextInt()) {
+            value = sc.nextInt();
+            sc.nextLine(); 
+            return value;
+        } else {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            sc.nextLine(); 
+        }
+        
+    }       
+}
 }
