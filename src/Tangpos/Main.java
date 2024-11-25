@@ -8,7 +8,7 @@ public class Main {
         boolean exit = true;
         while(exit){
             System.out.println("+-----------------------------------------------------------------+");
-            System.out.printf("|%-20s|\n","Event Registration");
+            System.out.printf("                   |%-20s|\n","Event Registration");
             System.out.println("+-----------------------------------------------------------------+");
             System.out.println("1. List of Events");
             System.out.println("2. Participants Registration");

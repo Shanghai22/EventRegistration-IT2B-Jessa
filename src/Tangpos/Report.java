@@ -53,11 +53,25 @@ public class Report {
         String[] tbl_Columns = {"E_Id", "E_Name", "E_Theme", "E_Date", "E_Price"};
         conf.viewRecords(tbl_view, tbl_Headers, tbl_Columns);
     }
-
+private int getValidIntegerInput(String prompt) {
+    int value = -1;
+    while (true) {
+        System.out.print(prompt);
+        if (sc.hasNextInt()) {
+            value = sc.nextInt();
+            sc.nextLine(); 
+            return value;
+        } else {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            sc.nextLine(); 
+        }
+        
+    }       
+}
     private void viewSpecificEvent() {
-        System.out.print("\nEnter Event ID to view details: ");
-        int id = sc.nextInt();
-        sc.nextLine(); 
+        
+        int id = getValidIntegerInput("\nEnter Event ID to view details: ");
+        
 
         String tbl_view = "SELECT * FROM tbl_Events WHERE E_Id = " + id;
         String[] tbl_Headers = {"Event ID", "Event Name", "Event Theme", "Event Date", "Price"};
